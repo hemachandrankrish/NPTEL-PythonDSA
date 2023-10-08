@@ -1,0 +1,49 @@
+def QuickSort(A,l,r):
+    if r-l <=1:
+        return()
+    
+    yellow = l+1
+    for green in range(l+1,r):
+        if A[green] <= A[l]:
+            (A[green],A[yellow]) = (A[yellow],A[green])
+            yellow = yellow + 1
+    (A[l], A[yellow-1]) = (A[yellow-1],A[l])
+
+    QuickSort(A,l,yellow-1)
+    QuickSort(A,yellow,r)
+
+
+
+
+#set the recursion 
+import sys
+#sys.setrecursionlimit(10000)
+
+'''
+Selection sort = O(n2)
+Insertion sort - O(n2)
+MergeSort = O(nlogn)
+QuickSort = O(nlogn)
+'''
+def InsertionSort(l):
+    for sliceEnd in range(len(l)):
+        pos = sliceEnd
+        while pos > 0 and l[pos] < l[pos-1]:
+            (l[pos],l[pos-1]) = (l[pos-1],l[pos])
+            pos = pos-1
+
+def SelectionSort(l):
+    for start in range(len(l)):
+        minpos = start
+        for i in range(start,len(l)):
+            if l[i] < l[minpos]:
+                minpos = i
+        (l[start],l[minpos]) = (l[minpos],l(start))
+
+if __name__ == "__main__":
+    #l = list(range(50,0,-1))
+    l = [43,32,22,63,57,91,78,13]
+    print(l)
+    #QuickSort(l,0,len(l))
+    InsertionSort(l)
+    print(l)
